@@ -1,5 +1,5 @@
 # goparrot
-guess and generate simalry go types based on existing one. 
+guess and generate simalry go functions based on existing one. 
 for example:
 
 ```go
