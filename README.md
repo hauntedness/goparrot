@@ -1,6 +1,7 @@
 # goparrot
 guess and generate simalry go types based on existing one. 
 for example:
+
 ```go
 //go:generate goparrot -p "Time;Open;High;Low;Close&&v[0];v[1];v[2];v[3];v[4]"
 func Time(kline [][]float64) (times []float64) {
@@ -9,7 +10,8 @@ func Time(kline [][]float64) (times []float64) {
 	}
 	return times
 }
-// auto generated
+// run go generate .
+// get below output in stdout
 func Open(kline [][]float64) (opens []float64) {
         for _, v := range kline {
                 opens = append(opens, v[1])
