@@ -64,11 +64,7 @@ func print(s string, args string) {
 	matrix := make(rows, column_length)
 	// str := s
 	for i := range rs {
-		words := strings.Split(rs[i], ";")
-		matrix[i] = make(row, len(words))
-		for j, v := range words {
-			matrix[i][j] = v
-		}
+		matrix[i] = strings.Split(rs[i], ";")
 	}
 	// matrix[0] = ["Time","Open","High"]
 	loop_count := len(matrix[0])
