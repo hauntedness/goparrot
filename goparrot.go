@@ -75,7 +75,7 @@ func print(s string, args string) {
 	for i := 0; i < loop_count; i++ {
 		tar := s
 		for j := 0; j < len(matrix); j++ {
-			if old, new := matrix[j][0], matrix[j][i]; new != "" {
+			if old, new := matrix[j][0], matrix[j][i]; new != "" && new != old {
 				tar = ReplaceAllByCaseSensitive(tar, old, new)
 			}
 		}
