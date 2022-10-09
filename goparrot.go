@@ -22,14 +22,18 @@ func parse() (file_name string, line_number int, p string) {
 	flag.StringVar(&p, "p", "", "")
 	flag.Parse()
 	file_name, b := os.LookupEnv("GOFILE")
-	if !b { return }
+	if !b {
+		return
+	}
 	line, b2 := os.LookupEnv("GOLINE")
-	if !b2 { return }
-	line_numer, err := strconv.Atoi(line)
+	if !b2 {
+		return
+	}
+	line_number, err := strconv.Atoi(line)
 	if err != nil {
 		panic(err)
 	}
-	return file_name, line_numer, p
+	return file_name, line_number, p
 }
 
 func parseFile(filename string, line int, args string) {
@@ -71,7 +75,9 @@ func print(s string, args string) {
 	for i := 0; i < loop_count; i++ {
 		tar := s
 		for j := 0; j < len(matrix); j++ {
-			tar = ReplaceAllByCaseSensitive(tar, matrix[j][0], matrix[j][i])
+			if old, new := matrix[j][0], matrix[j][i]; new != "" {
+				tar = ReplaceAllByCaseSensitive(tar, old, new)
+			}
 		}
 		fmt.Println(tar)
 	}
