@@ -72,14 +72,16 @@ func print(s string, args string) {
 	}
 	// matrix[0] = ["Time","Open","High"]
 	loop_count := len(matrix[0])
-	for i := 0; i < loop_count; i++ {
+	for i := 1; i < loop_count; i++ {
 		tar := s
 		for j := 0; j < len(matrix); j++ {
 			if old, new := matrix[j][0], matrix[j][i]; new != "" && new != old {
 				tar = ReplaceAllByCaseSensitive(tar, old, new)
 			}
 		}
-		fmt.Println(tar)
+		if tar != s {
+			fmt.Println(tar)
+		}
 	}
 }
 
